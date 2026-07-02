@@ -133,3 +133,41 @@ for (let i = 0; i < wishlistButtons.length; i++) {
         }
     });
 }
+
+
+
+// form handling with validation feedback
+const form = document.querySelector('.inquiry-form');
+
+//feedback message area 
+const feedbackMessage = document.createElement('p');
+feedbackMessage.style.marginTop = "15px";
+feedbackMessage.style.fontWeight = "bold";
+form.appendChild(feedbackMessage);
+
+form.addEventListener('submit', function(event) {
+    //stop form from performing default reload
+    event.preventDefault();
+    
+    // Read user inputs using .value property
+    const nameInput = document.getElementById('client-name').value;
+    const emailInput = document.getElementById('client-email').value;
+    const vehicleSelect = document.getElementById('target-vehicle');
+    const selectedVehicleName = vehicleSelect.options[vehicleSelect.selectedIndex].text;
+    
+    //custom Validation checks beyond just normal HTML rules
+    if (nameInput.trim() === "") {
+        feedbackMessage.textContent = "Error: Name field cannot be empty spaces.";
+        feedbackMessage.style.color = "red";
+    } else if (nameInput.length < 3) {
+        feedbackMessage.textContent = "Error: Please enter your actual full name (at least 3 characters long).";
+        feedbackMessage.style.color = "red";
+    } else {
+        //print out direct feedback confirming successful simulated reservation
+        feedbackMessage.innerHTML = "Success! Thank you, " + nameInput + ". Your test drive reservation for the " + selectedVehicleName + " has been booked! Check " + emailInput + " for details.";
+        feedbackMessage.style.color = "green";
+        
+        //clear inputs after submitting cleanly
+        form.reset();
+    }
+});
