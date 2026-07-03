@@ -1,0 +1,14 @@
+Dynamic Cars Loop
+The hardcoded cars were removed from the HTML file. A JavaScript array ("carsArray") stores the car information using the required "name" property. A forEach loop reads this array to build and display the cards on the website dynamically.
+
+Add and Remove Wishlist Items
+When a user clicks "Add to Wishlist" on a car card, JavaScript creates a new list item using document.createElement() and appends it to a saved vehicles list. Each saved item gets a "Remove" button that triggers the .remove() method to instantly delete the item from the page.
+
+Form Handling and Error Messages
+The test drive form uses event.preventDefault() to stop the page from reloading when submitted. JavaScript reads the text boxes using the .value property. It runs a custom check to make sure the user's name is at least 3 letters long, then writes a success message (in green) or an error message (in red) directly onto the page.
+
+Saving Data (localStorage)
+The wishlist saves its state so it doesn't disappear when you refresh the page. When cars are added or removed, the list is saved into localStorage using JSON.stringify(). When the website first loads, it uses JSON.parse() to read the saved data and reload the wishlist automatically.
+
+Clicking the Banner to Reveal Info
+A click listener is attached to the website's banner image. Clicking the image toggles a hidden text box containing the showroom address from hidden to visible. This is controlled using the required bannerImage.classList.toggle('revealed-state') function.
