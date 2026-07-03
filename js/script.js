@@ -172,25 +172,7 @@ form.addEventListener('submit', function(event) {
     }
 });
 
-// LOCALSTORAGE: Load existing items or start empty if there's nothing saved yet
-let savedItems = [];
-if (localStorage.getItem('savedCars') !== null) {
-    savedItems = JSON.parse(localStorage.getItem('savedCars'));
-}
 
-//saving to local storage
-savedItems.push(carName);
-localStorage.setItem('savedCars', JSON.stringify(savedItems));
-
-
-//remove element from our tracking array
-const index = savedItems.indexOf(carName);
-if (index > -1) {
-    savedItems.splice(index, 1);
-}
-
-//update localStorage so it stays deleted on reload
-localStorage.setItem('savedCars', JSON.stringify(savedItems));
 
 //click to reveal overlay on banner image
 const bannerImage = document.querySelector('.banner-img');
@@ -198,7 +180,7 @@ const wrapper = document.querySelector('.hero-image-wrapper');
 
 //setup a small hidden caption element block
 const infoOverlay = document.createElement('p');
-infoOverlay.textContent = "📍 Showroom Address: 100 Main St. Open 9 AM - 6 PM Daily!";
+infoOverlay.textContent = " Showroom Address: 100 Main St. Open 9 AM - 6 PM Daily!";
 infoOverlay.style.color = "blue";
 infoOverlay.style.fontWeight = "bold";
 infoOverlay.style.display = "none"; // start hidden
