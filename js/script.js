@@ -171,3 +171,29 @@ form.addEventListener('submit', function(event) {
         form.reset();
     }
 });
+
+//click to reveal overlay on banner image
+const bannerImage = document.querySelector('.banner-img');
+const wrapper = document.querySelector('.hero-image-wrapper');
+
+//setup a small hidden caption element block
+const infoOverlay = document.createElement('p');
+infoOverlay.textContent = "📍 Showroom Address: 100 Main St. Open 9 AM - 6 PM Daily!";
+infoOverlay.style.color = "blue";
+infoOverlay.style.fontWeight = "bold";
+infoOverlay.style.display = "none"; // start hidden
+wrapper.appendChild(infoOverlay);
+
+bannerImage.style.cursor = "pointer";
+
+bannerImage.addEventListener('click', function() {
+    // Fulfilling the classList
+    bannerImage.classList.toggle('revealed-state');
+    
+    //basic if-else logic to handle visibility mapping alongside the class toggle
+    if (infoOverlay.style.display === "none") {
+        infoOverlay.style.display = "block";
+    } else {
+        infoOverlay.style.display = "none";
+    }
+});
